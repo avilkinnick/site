@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кинорулетка - Найди свой фильм</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка сайта -->
+        <header class="header">
+            <nav class="navbar">
+                <div class="nav-brand">
+                    <div class="logo">🎬</div>
+                    <h1>Кинорулетка</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#home" class="nav-link active">Главная</a></li>
+                    <li class="nav-item"><a href="#roulette" class="nav-link">Рулетка</a></li>
+                    <li class="nav-item"><a href="#profile" class="nav-link">Профиль</a></li>
+                    <li class="nav-item"><a href="#movies" class="nav-link">Коллекция</a></li>
+                    <li class="nav-item"><a href="#stats" class="nav-link">Статистика</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <div class="search-box">
+                        <input type="text" placeholder="Поиск фильмов..." class="search-input">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                    <div class="auth-buttons">
+                        <button id="loginBtn" class="btn btn-outline">Войти</button>
+                        <button id="registerBtn" class="btn btn-primary">Регистрация</button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Главный контент -->
+        <main class="main-content">
+            <!-- Страница главная -->
+            <section id="home" class="page active">
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h2 class="hero-title">Не знаете, что посмотреть?</h2>
+                        <p class="hero-subtitle">Кинорулетка подберет идеальный фильм на основе ваших предпочтений и настроения</p>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">10,000+</div>
+                                <div class="stat-label">фильмов в базе</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">95%</div>
+                                <div class="stat-label">точность подбора</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">50,000+</div>
+                                <div class="stat-label">пользователей</div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-large" onclick="showPage('roulette')">
+                            🎯 Крутить рулетку
+                        </button>
+                    </div>
+                    <div class="hero-preview">
+                        <div class="preview-card">
+                            <div class="movie-poster-large">
+                                <div class="poster-image"></div>
+                                <div class="poster-overlay">
+                                    <div class="rating">8.7</div>
+                                    <div class="genre-tag">Триллер</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Блок рекламы -->
+                <div class="ad-section">
+                    <div class="ad-container">
+                        <div class="ad-badge">Рекомендуем</div>
+                        <div class="ad-content">
+                            <div class="ad-game">
+                                <div class="game-logo">
+                                    <img src="https://img.itch.zone/aW1nLzE0MDU0NTA5LnBuZw==/original/0lGfzR.png" alt="Огонь и Вода" onerror="this.style.display='none'">
+                                    <div class="game-logo-fallback">🔥💧</div>
+                                </div>
+                                <div class="game-info">
+                                    <h3>Огонь и Вода</h3>
+                                    <p>Захватывающая кооперативная игра для двоих игроков! Пройдите все храмы вместе с другом, используя магию огня и воды.</p>
+                                    <div class="game-features">
+                                        <span>👥 2 игрока</span>
+                                        <span>🎮 Кооператив</span>
+                                        <span>⭐ 4.8/5</span>
+                                    </div>
+                                    <div class="game-platforms">
+                                        <span>🖥️ PC</span>
+                                        <span>📱 Mobile</span>
+                                        <span>🎮 Console</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-fire" onclick="playGame()">
+                                🎮 Играть бесплатно
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Быстрый доступ -->
+                <div class="quick-actions">
+                    <h3>Быстрый доступ</h3>
+                    <div class="action-grid">
+                        <div class="action-card" onclick="showPage('roulette')">
+                            <div class="action-icon">🎲</div>
+                            <h4>Быстрая рулетка</h4>
+                            <p>Случайный фильм без настроек</p>
+                        </div>
+                        <div class="action-card" onclick="showPage('profile')">
+                            <div class="action-icon">⚙️</div>
+                            <h4>Настройки профиля</h4>
+                            <p>Укажите ваши предпочтения</p>
+                        </div>
+                        <div class="action-card" onclick="showPage('stats')">
+                            <div class="action-icon">📊</div>
+                            <h4>Моя статистика</h4>
+                            <p>Просмотренные фильмы и рейтинги</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Остальные секции остаются без изменений -->
+            <!-- Страница рулетки -->
+            <section id="roulette" class="page">
+                <div class="roulette-section">
+                    <div class="roulette-header">
+                        <h2>Кинорулетка</h2>
+                        <p>Настройте параметры и крутите рулетку для подбора фильма</p>
+                    </div>
+
+                    <div class="roulette-content">
+                        <div class="roulette-controls">
+                            <div class="control-group">
+                                <h4>Настройки подбора</h4>
+                                <div class="filters">
+                                    <div class="filter-item">
+                                        <label>Жанры</label>
+                                        <div class="genre-selector">
+                                            <span class="genre-tag active" data-genre="all">Все</span>
+                                            <span class="genre-tag" data-genre="action">Боевик</span>
+                                            <span class="genre-tag" data-genre="comedy">Комедия</span>
+                                            <span class="genre-tag" data-genre="drama">Драма</span>
+                                            <span class="genre-tag" data-genre="sci-fi">Фантастика</span>
+                                            <span class="genre-tag" data-genre="horror">Ужасы</span>
+                                        </div>
+                                    </div>
+                                    <div class="filter-item">
+                                        <label>Год выпуска</label>
+                                        <div class="range-selector">
+                                            <span id="yearValue">2010</span>
+                                            <input type="range" min="1990" max="2024" value="2010" class="year-slider" id="yearSlider">
+                                            <span>2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="filter-item">
+                                        <label>Рейтинг от</label>
+                                        <select class="rating-select" id="ratingSelect">
+                                            <option value="0">Любой</option>
+                                            <option value="6">6+</option>
+                                            <option value="7">7+</option>
+                                            <option value="8" selected>8+</option>
+                                            <option value="9">9+</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="roulette-main">
+                            <div class="roulette-wheel-container">
+                                <div class="wheel-background">
+                                    <div class="wheel" id="wheel">
+                                        <!-- Wheel segments will be generated by JS -->
+                                    </div>
+                                    <div class="wheel-center">
+                                        <div class="center-logo">🎬</div>
+                                    </div>
+                                </div>
+                                <div class="wheel-pointer">
+                                    <div class="pointer-arrow"></div>
+                                </div>
+                            </div>
+
+                            <button id="spinBtn" class="btn btn-primary btn-spin">
+                                <span class="spin-text">🎯 Крутить рулетку</span>
+                                <span class="spinning-text" style="display: none;">🌀 Подбираем фильм...</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="result" class="roulette-result"></div>
+                </div>
+            </section>
+
+            <!-- Страница профиля -->
+            <section id="profile" class="page">
+                <div class="profile-section">
+                    <div class="profile-header">
+                        <h2>Мой профиль</h2>
+                        <p>Управляйте вашими предпочтениями и настройками</p>
+                    </div>
+
+                    <div class="profile-content">
+                        <div class="profile-sidebar">
+                            <div class="user-card">
+                                <div class="user-avatar">
+                                    <div class="avatar-image">👤</div>
+                                    <div class="avatar-status"></div>
+                                </div>
+                                <div class="user-info">
+                                    <h3 id="userName">Гость</h3>
+                                    <p id="userEmail">Войдите в аккаунт</p>
+                                    <div class="user-stats">
+                                        <div class="user-stat">
+                                            <div class="stat-value">0</div>
+                                            <div class="stat-name">фильмов</div>
+                                        </div>
+                                        <div class="user-stat">
+                                            <div class="stat-value">0</div>
+                                            <div class="stat-name">оценок</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="profile-menu">
+                                <div class="menu-item active">Основное</div>
+                                <div class="menu-item">Предпочтения</div>
+                                <div class="menu-item">Уведомления</div>
+                                <div class="menu-item">Безопасность</div>
+                            </div>
+                        </div>
+
+                        <div class="profile-main">
+                            <div class="preferences-section">
+                                <h4>Любимые жанры</h4>
+                                <div class="preferences-grid">
+                                    <div class="preference-card">
+                                        <div class="preference-icon">💥</div>
+                                        <span>Боевик</span>
+                                    </div>
+                                    <div class="preference-card active">
+                                        <div class="preference-icon">😂</div>
+                                        <span>Комедия</span>
+                                    </div>
+                                    <div class="preference-card">
+                                        <div class="preference-icon">🚀</div>
+                                        <span>Фантастика</span>
+                                    </div>
+                                    <div class="preference-card">
+                                        <div class="preference-icon">🔍</div>
+                                        <span>Детектив</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="data-section">
+                                <h4>История просмотров</h4>
+                                <div class="data-placeholder">
+                                    <p>Данные будут синхронизированы с вашим аккаунтом</p>
+                                    <small>После входа в систему здесь отобразится ваша история просмотров и предпочтений</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Страница коллекции -->
+            <section id="movies" class="page">
+                <div class="movies-section">
+                    <h2>Моя коллекция</h2>
+                    <div class="collection-header">
+                        <div class="collection-stats">
+                            <span>Фильмы: <strong>0</strong></span>
+                            <span>Средний рейтинг: <strong>-</strong></span>
+                            <span>Часов просмотрено: <strong>0</strong></span>
+                        </div>
+                        <button class="btn btn-outline">Добавить фильм</button>
+                    </div>
+
+                    <div class="movies-grid">
+                        <div class="empty-state">
+                            <div class="empty-icon">🎬</div>
+                            <h4>Коллекция пуста</h4>
+                            <p>Начните добавлять фильмы после просмотра</p>
+                            <button class="btn btn-primary" onclick="showPage('roulette')">Найти фильм</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Страница статистики -->
+            <section id="stats" class="page">
+                <div class="stats-section">
+                    <h2>Статистика просмотров</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">📈</div>
+                            <div class="stat-content">
+                                <div class="stat-number">0</div>
+                                <div class="stat-label">Всего просмотров</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-content">
+                                <div class="stat-number">-</div>
+                                <div class="stat-label">Средняя оценка</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🎭</div>
+                            <div class="stat-content">
+                                <div class="stat-number">-</div>
+                                <div class="stat-label">Любимый жанр</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="charts-placeholder">
+                        <p>Графики и аналитика будут доступны после накопления данных</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Подвал -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Кинорулетка</h4>
+                    <p>Сервис подбора фильмов на основе AI</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <a href="#home">Главная</a>
+                    <a href="#roulette">Рулетка</a>
+                    <a href="#profile">Профиль</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Разработка</h4>
+                    <p>Версия 1.0.0</p>
+                    <p>API: v2 (готов к интеграции)</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Модальные окна -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Вход в аккаунт</h2>
+            <form id="loginForm">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Пароль" required>
+                <button type="submit" class="btn btn-primary">Войти</button>
+            </form>
+            <div class="modal-footer">
+                <p>Нет аккаунта? <a href="#" id="switchToRegister">Зарегистрироваться</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Регистрация</h2>
+            <form id="registerForm">
+                <input type="text" placeholder="Имя пользователя" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Пароль" required>
+                <div class="form-note">
+                    Регистрируясь, вы соглашаетесь с обработкой ваших данных для персонализации рекомендаций
+                </div>
+                <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+            </form>
+            <div class="modal-footer">
+                <p>Уже есть аккаунт? <a href="#" id="switchToLogin">Войти</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
