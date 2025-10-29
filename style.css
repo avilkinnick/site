@@ -19,6 +19,11 @@
     --error: #ff4444;
 }
 
+@font-face {
+    font-family: 'Iosevka';
+    src: url('IosevkaNerdFont-Regular.ttf');
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background: var(--bg-primary);
@@ -101,7 +106,7 @@ body {
     background: var(--bg-tertiary);
 }
 
-.nav-link.active::after {
+/* .nav-link.active::after {
     content: '';
     position: absolute;
     bottom: -1px;
@@ -110,6 +115,18 @@ body {
     height: 2px;
     background: var(--accent-primary);
     border-radius: 2px;
+} */
+
+.faw {
+    text-decoration: none;
+    color: var(--text-primary);
+    background: rgba(0, 0, 0, 0);
+}
+
+.faw.active {
+    text-decoration: none;
+    color: var(--text-primary);
+    background: rgba(0, 0, 0, 0);
 }
 
 .nav-actions {
@@ -1172,7 +1189,7 @@ body {
 
 .segment-icon {
     font-size: 1.8rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 7rem;
     display: block;
 }
 

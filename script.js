@@ -122,47 +122,47 @@ function updateUserInterface(name, email) {
 
 // Игра "Огонь и Вода"
 function playGame() {
-    const gameWindow = window.open('', '_blank', 'width=800,height=600');
-    if (gameWindow) {
-        gameWindow.document.write(`
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <title>Огонь и Вода - Загрузка</title>
-                <style>
-                    body {
-                        margin: 0;
-                        padding: 0;
-                        background: linear-gradient(135deg, #ff6b35, #4ecdc4);
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        height: 100vh;
-                        font-family: Arial, sans-serif;
-                        color: white;
-                    }
-                    .loading-container {
-                        text-align: center;
-                    }
-                    .loading-icon {
-                        font-size: 4rem;
-                        margin-bottom: 1rem;
-                    }
-                </style>
-            </head>
-            <body>
-                <div class="loading-container">
-                    <div class="loading-icon">🔥💧</div>
-                    <h2>Огонь и Вода</h2>
-                    <p>Загрузка игры...</p>
-                    <p><small>В полной версии здесь будет запущена игра</small></p>
-                </div>
-            </body>
-            </html>
-        `);
-    } else {
-        alert('Игра "Огонь и Вода" запускается! 🎮\n\n(В полной версии будет запущена настоящая игра)');
-    }
+    // const gameWindow = window.open('', '_blank', 'width=800,height=600');
+    // if (gameWindow) {
+    //     gameWindow.document.write(`
+    //         <!DOCTYPE html>
+    //         <html>
+    //         <head>
+    //             <title>Огонь и Вода - Загрузка</title>
+    //             <style>
+    //                 body {
+    //                     margin: 0;
+    //                     padding: 0;
+    //                     background: linear-gradient(135deg, #ff6b35, #4ecdc4);
+    //                     display: flex;
+    //                     justify-content: center;
+    //                     align-items: center;
+    //                     height: 100vh;
+    //                     font-family: Arial, sans-serif;
+    //                     color: white;
+    //                 }
+    //                 .loading-container {
+    //                     text-align: center;
+    //                 }
+    //                 .loading-icon {
+    //                     font-size: 4rem;
+    //                     margin-bottom: 1rem;
+    //                 }
+    //             </style>
+    //         </head>
+    //         <body>
+    //             <div class="loading-container">
+    //                 <div class="loading-icon">🔥💧</div>
+    //                 <h2>Огонь и Вода</h2>
+    //                 <p>Загрузка игры...</p>
+    //                 <p><small>В полной версии здесь будет запущена игра</small></p>
+    //             </div>
+    //         </body>
+    //         </html>
+    //     `);
+    // } else {
+    //     alert('Игра "Огонь и Вода" запускается! 🎮\n\n(В полной версии будет запущена настоящая игра)');
+    // }
 }
 
 // Улучшенная рулетка
@@ -244,8 +244,8 @@ class MovieRoulette {
             const segment = document.createElement('div');
             segment.className = 'wheel-segment';
             segment.style.transform = `rotate(${index * segmentAngle}deg)`;
-            segment.style.background = `conic-gradient(from ${index * segmentAngle}deg to ${(index + 1) * segmentAngle}deg, ${genre.color}, ${genre.color}dd)`;
-
+            // segment.style.background = `conic-gradient(from ${index * segmentAngle}deg to ${(index + 1) * segmentAngle}deg, ${genre.color}, ${genre.color}dd)`;
+            segment.style.background = `${genre.color}`;
             const content = document.createElement('div');
             content.className = 'wheel-segment-content';
             content.innerHTML = `
